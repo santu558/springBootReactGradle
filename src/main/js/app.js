@@ -15,27 +15,52 @@ class App extends React.Component { // <1>
 
 	constructor(props) {
 		super(props);
-		this.state = {employees: []};
+		this.state = {};
 	}
 
 	componentDidMount() { // <2>
-		client({method: 'GET', path: '/api/employees'}).done(response => {
-			this.setState({employees: response.entity._embedded.employees});
+		client({method: 'GET', path: '/api/stores'}).done(response => {
+			this.setState({stores: response.entity._embedded.stores});
+//			 this.gridOptions.columnDefs = [
+//                        { headerName: 'storeNumber', field: 'storeNumber' },
+//                        { headerName: 'address', field: 'address', type: 'rightAligned' },
+//                        { headerName: 'lastRunDate', field: 'lastRunDate', type: 'numericColumn' }
+//                      ];
+//
+////            this.gridOptions.rowData = response.entity._embedded.stores;
+//
+//            this.gridOptions.rowData = [
+//                        { storeNumber: 'Toyota', model: 'address', lastRunDate: 35000 },
+//                        { storeNumber: 'Ford', model: 'address', lastRunDate: 32000 },
+//                        { storeNumber: 'Porsche', model: 'address', lastRunDate: 72000 }
+//                      ];
 		});
 	}
+//
+//     gridOptions = {
+//        columnDefs: [
+//            { headerName: 'storeNumber', field: 'storeNumber' },
+//            { headerName: 'address', field: 'address', type: 'rightAligned' },
+//            { headerName: 'lastRunDate', field: 'lastRunDate', type: 'numericColumn' },
+//        ],
+//        rowData : this.state.stores
+//        // other grid options ...
+//    }
+
 
 	render() { // <3>
 		return (
 			//<EmployeeList employees={this.state.employees}/>
 			 <div className="ag-theme-alpine" style={{ height: 400, width: 600 }}>
                  <AgGridReact
-                    rowData={ this.state.employees }
+                    rowData={ this.state.stores }
                     rowSelection="multiple">
-                    <AgGridColumn field="firstName" sortable={ true } filter={ true } checkboxSelection={ true }></AgGridColumn>
-                    <AgGridColumn field="lastName" sortable={ true } filter={ true }></AgGridColumn>
-                    <AgGridColumn field="description" sortable={ true } filter={ true }></AgGridColumn>
+                    <AgGridColumn field="storeNumber" sortable={ true } filter={ true } checkboxSelection={ true }></AgGridColumn>
+                    <AgGridColumn field="address" sortable={ true } filter={ true }></AgGridColumn>
+                    <AgGridColumn field="lastRunDate" sortable={ true } filter={ true }></AgGridColumn>
                 </AgGridReact>
                 </div>
+//            <AgGridReact gridOptions={this.gridOptions} />
 		)
 	}
 }

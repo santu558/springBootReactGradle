@@ -25,36 +25,36 @@ import java.util.Objects;
  */
 // tag::code[]
 @Entity // <1>
-public class Employee {
+public class Store {
 
 	private @Id @GeneratedValue Long id; // <2>
-	private String firstName;
-	private String lastName;
-	private String description;
+	private String storeNumber;
+	private String address;
+	private String lastRunDate;
 
-	private Employee() {}
+	private Store() {}
 
-	public Employee(String firstName, String lastName, String description) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.description = description;
+	public Store(String storeNumber, String address, String lastRunDate) {
+		this.storeNumber = storeNumber;
+		this.address = address;
+		this.lastRunDate = lastRunDate;
 	}
 
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		Employee employee = (Employee) o;
-		return Objects.equals(id, employee.id) &&
-			Objects.equals(firstName, employee.firstName) &&
-			Objects.equals(lastName, employee.lastName) &&
-			Objects.equals(description, employee.description);
+		Store store = (Store) o;
+		return Objects.equals(id, store.id) &&
+			Objects.equals(storeNumber, store.storeNumber) &&
+			Objects.equals(address, store.address) &&
+			Objects.equals(lastRunDate, store.lastRunDate);
 	}
 
 	@Override
 	public int hashCode() {
 
-		return Objects.hash(id, firstName, lastName, description);
+		return Objects.hash(id, storeNumber, address, lastRunDate);
 	}
 
 	public Long getId() {
@@ -65,37 +65,37 @@ public class Employee {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getStoreNumber() {
+		return storeNumber;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setStoreNumber(String storeNumber) {
+		this.storeNumber = storeNumber;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getLastRunDate() {
+		return lastRunDate;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setLastRunDate(String lastRunDate) {
+		this.lastRunDate = lastRunDate;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee{" +
+		return "Store{" +
 			"id=" + id +
-			", firstName='" + firstName + '\'' +
-			", lastName='" + lastName + '\'' +
-			", description='" + description + '\'' +
+			", storeNumber='" + storeNumber + '\'' +
+			", inStoreDate='" + address + '\'' +
+			", markDownDate='" + lastRunDate + '\'' +
 			'}';
 	}
 }

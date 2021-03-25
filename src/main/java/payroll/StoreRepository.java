@@ -21,7 +21,7 @@ import org.springframework.data.repository.CrudRepository;
  * @author Greg Turnquist
  */
 // tag::code[]
-public interface EmployeeRepository extends CrudRepository<Employee, Long> { // <1>
+public interface StoreRepository extends CrudRepository<Store, Long> { // <1>
 
 }
 // end::code[]
